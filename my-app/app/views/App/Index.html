@@ -1,0 +1,29 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<div class="container">
+  {{template "flash.html" .}}
+
+  <form action="/Upload/Basic" method="post" enctype="multipart/form-data" id="aaa">
+    <button type="button" id="fileUploadBtn">ファイルをアップロード</button>
+  </form>
+
+  <form action="/Upload/Image" method="post" enctype="multipart/form-data" id="bbb">
+    <input type="file" id="fileInput" name="fileInput" style="display: none;">
+  </form>
+</div>
+
+<script>
+  $(document).ready(function(){
+      $('#fileUploadBtn').click(function(){
+          $('#fileInput').click();
+      });
+
+      $('#fileInput').change(function(){
+          if ($(this).val() != '') {
+              $('#bbb').submit();
+          }
+      });
+  });
+</script>
